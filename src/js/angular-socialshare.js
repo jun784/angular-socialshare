@@ -160,6 +160,22 @@
           );
         };
 
+        $scope.lineShare = function manageLineShare (data) {
+          var urlString = '//line.me/R/msg/text/?';
+
+          if (data.text) {
+            urlString += 'text=' + encodeURIComponent(data.text);
+          }
+
+          // Default to the current page if a URL isn't specified
+          urlString += '&url=' + encodeURIComponent(data.url || $location.absUrl());
+
+          $window.open(
+            urlString,
+            'sharer', 'toolbar=0,status=0,width=' + data.popupWidth + ',height=' + data.popupHeight
+          );
+        };
+
         element.bind(properties.eventTrigger, function onEventTriggered() {
 
           switch (properties.provider) {
@@ -221,6 +237,11 @@
             case 'buffer':
 
               $scope.bufferShare(properties);
+              break;
+
+            case 'line':
+
+              $scope.lineShare(properties);
               break;
 
             default: return;
