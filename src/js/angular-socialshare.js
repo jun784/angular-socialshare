@@ -168,7 +168,7 @@
           }
 
           // Default to the current page if a URL isn't specified
-          urlString += '%0D%0A&url=' + encodeURIComponent(data.url || $location.absUrl());
+          urlString += '%0D%0A' + encodeURIComponent(data.url || $location.absUrl());
 
           $window.open(
             urlString,
