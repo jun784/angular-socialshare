@@ -161,7 +161,7 @@
         };
 
         $scope.lineShare = function manageLineShare (data) {
-          var urlString = '//line.naver.jp/R/msg/text/?';
+          var urlString = 'line://msg/text/';
 
           if (data.text) {
             urlString += encodeURIComponent(data.text);
